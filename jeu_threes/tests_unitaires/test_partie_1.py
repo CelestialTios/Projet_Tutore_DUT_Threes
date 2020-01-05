@@ -4,6 +4,8 @@ sys.path.insert(0, myPath +'/../')
 
 import tiles.tiles_acces
 import tiles.tiles_moves
+import game.play
+import ui.play_display
 
 p={'n':4,'nb_cases_libres':16,'tiles':[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}
 
