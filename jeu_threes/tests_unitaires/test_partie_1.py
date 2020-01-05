@@ -1,5 +1,4 @@
-﻿from tiles.games.play import*
-from  
+
 def test_init_play():
     plateau=init_play()
 
