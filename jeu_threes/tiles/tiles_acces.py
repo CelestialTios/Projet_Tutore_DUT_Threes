@@ -1,4 +1,9 @@
 ﻿from game.play import *
+        
+#############################
+#  Fonction de la partie 1  #
+#############################
+
 
 def check_indice(p,i):
         """
@@ -68,6 +73,10 @@ def is_room_empty(p,lig,col):
             return False                        # Retourne False quand get_value ne retourne pas 0
         else:
             return True
+
+#############################
+#  Fonction de la partie 2  #
+#############################
 
 
 
