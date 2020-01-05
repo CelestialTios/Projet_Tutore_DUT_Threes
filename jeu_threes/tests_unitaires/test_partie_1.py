@@ -2,7 +2,8 @@ import sys, os
 myPath = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, myPath +'/../')
 
-import game.play
+import tiles.tiles_acces
+import tiles.tiles_moves
 
 p={'n':4,'nb_cases_libres':16,'tiles':[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}
 
