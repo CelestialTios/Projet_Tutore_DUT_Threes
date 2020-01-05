@@ -26,9 +26,9 @@ def test_init_play():
     assert not(plateau['tiles'] == [0]) , "Erreur F"
     print("Fonction init_play : OK")
 
-#########################
-#  module tiles_acces   #
-#########################    
+###########################
+#  module : tiles_acces   #
+###########################    
 def test_check_indice():
     assert check_indice(p,3)==True, "Erreur A"
     assert check_indice(p,5)==False, "Erreur B"
@@ -81,7 +81,12 @@ def test_get_score():
     assert not(get_score(p1)==0), "Erreur C"
     print("Fonction get_score : OK")
     
+###########################
+#  module : play_dsplay   #
+###########################
 
-
-
-    
+def test_affichage_moyen():
+    p1={'n':4,'nb_cases_libres':16,'tiles':[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}
+    assert affichage_moyen(p1)==True,"Erreur A"
+    assert not(affichage_moyen(p1))==False,"Erreur B"
+    print("Fonction affichage_moyen : OK")
