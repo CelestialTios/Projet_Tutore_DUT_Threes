@@ -1,4 +1,6 @@
 
+p={'n':4,'nb_cases_libres':16,'tiles':[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}
+
 def test_init_play():
     plateau=init_play()
 
