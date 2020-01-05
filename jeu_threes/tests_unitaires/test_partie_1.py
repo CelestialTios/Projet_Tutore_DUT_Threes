@@ -1,3 +1,8 @@
+import sys, os
+myPath = os.path.dirname(os.path.abspath)
+sys.path.insert(0, myPath +'/../')
+
+import game.play
 
 p={'n':4,'nb_cases_libres':16,'tiles':[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}
 
