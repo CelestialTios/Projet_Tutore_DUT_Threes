@@ -27,7 +27,7 @@ def test_init_play():
     print("Fonction init_play : OK")
 
 #########################
-#  module tiles_ acces  #
+#  module tiles_acces   #
 #########################    
 def test_check_indice():
     assert check_indice(p,3)==True, "Erreur A"
