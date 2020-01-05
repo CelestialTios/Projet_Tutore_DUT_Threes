@@ -40,11 +40,11 @@ def get_value(p,lig,col):
     @param-col: numérotation de la colonne de la case
     """
 
-    assert check_room(p,lig,col) == True, "Erreur perçu dans lig ou col"   #Vérifie que la case existe pour pouvoir prendre la valeur
-
-    val=p['tiles'][4*lig+1*col]                                            #Donne la valeur de la case à la position(lig,col)
-
-    return val
+    if check_room(p,lig,col) == True:      #Vérifie que la case existe pour pouvoir prendre la valeur
+        val=p['tiles'][4*lig+1*col]        #Donne la valeur de la case à la position(lig,col)
+        return val
+    else:
+        return False                       #Implique que la case n'existe pas dans le plateau
 
 
 def set_value(p,lig,col,val):
@@ -58,9 +58,11 @@ def set_value(p,lig,col,val):
     @param-val : nouvelle valeur assigné à la case(lig,col)
     """
 
-    assert check_room(p,lig,col) == True, "Erreur perçu dans lig ou col"   #Vérifie que la case existe pour pouvoir modifier la valeur
-    p['tiles'][4*lig+1*col]=val                                            #Modifie la valeur de la tuile à la position(lig,col) par val
-    return
+    if check_room(p,lig,col) == True:           #Vérifie que la case existe pour pouvoir modifier la valeur
+        p['tiles'][4*lig+1*col]=val             #Modifie la valeur de la tuile à la position(lig,col) par val
+        return True
+    else:
+        return False
 
 
 def is_room_empty(p,lig,col):
