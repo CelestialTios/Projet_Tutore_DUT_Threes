@@ -2,6 +2,10 @@
 from tiles_acces import *
 from random import randint
 
+#############################
+#  Fonction de la partie 1  #
+#############################
+
 def get_nb_empty_rooms(p):
         """
         Prend en paramètre un dictionnaire correspondant au plateau de jeu
@@ -16,7 +20,9 @@ def get_nb_empty_rooms(p):
             i+=1
 
         return nbr_zeros
-
+#############################
+#  Fonction de la partie 2  #
+#############################
 
 def get_next_alea_tiles(plateau,mode):
     """
