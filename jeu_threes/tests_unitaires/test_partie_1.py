@@ -76,6 +76,17 @@ def test_is_room_empty():
 #  module tiles_moves   #
 #########################
 
+def test_get_nb_empty_rooms():
+    p={'n':4,'nb_cases_libres':16,'tiles':[0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3]}
+    get_nb_empty_rooms(p)
+    assert get_nb_empty_rooms(p)==4, "Erreur A"
+    p={'n':4,'nb_cases_libres':16,'tiles':[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}
+    get_nb_empty_rooms(p)
+    assert get_nb_empty_rooms(p)==16, "Erreur B"
+    p={'n':4,'nb_cases_libres':16,'tiles':[6,1,2,3,1,1,2,3,6,1,2,3,1,1,2,3]}
+    get_nb_empty_rooms(p)
+    assert get_nb_empty_rooms(p)==0, "Erreur C"
+
 #########################
 #      module play      #
 #########################
