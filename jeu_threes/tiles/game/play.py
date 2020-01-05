@@ -1,5 +1,8 @@
 ﻿from tiles_moves import *
 
+#############################
+#  Fonction de la partie 1  #
+#############################
 
 def init_play():
     """
@@ -42,3 +45,8 @@ def get_score(p):
         score += p['tiles'][i]
         i += 1
     return score
+
+#############################
+#  Fonction de la partie 2  #
+#############################
+
