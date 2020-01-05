@@ -2,8 +2,10 @@
 
 def check_indice(p,i):
         """
-        Prend en paramètre un indice et un dictionnaire correspondant Ã  un plateau\n",
-        Retourne True si l'indice est compris entre 0 et n-1\n",
+        Prend en paramètre un indice et un dictionnaire correspondant à un plateau,
+        Retourne True si l'indice est compris entre 0 et n-1,
+        
+        
         """
 
         if i<=p['n']-1 and i>=0:
@@ -33,9 +35,9 @@ def get_value(p,lig,col):
     @param-col: numérotation de la colonne de la case
     """
 
-    assert check_room(p,lig,col) == True, "Erreur perçu dans lig ou col"
+    assert check_room(p,lig,col) == True, "Erreur perçu dans lig ou col"   #Vérifie que la case existe pour pouvoir prendre la valeur
 
-    val=p['tiles'][4*lig+1*col]
+    val=p['tiles'][4*lig+1*col]                                            #Donne la valeur de la case à la position(lig,col)
 
     return val
 
@@ -50,9 +52,11 @@ def set_value(p,lig,col,val):
     @param-col : numérotation de la colonne de la case
     @param-val : nouvelle valeur assigné à la case(lig,col)
     """
-    assert check_room(p,lig,col) == True, "Erreur perçu dans lig ou col"
-    p['tiles'][4*lig+1*col]=val
+
+    assert check_room(p,lig,col) == True, "Erreur perçu dans lig ou col"   #Vérifie que la case existe pour pouvoir modifier la valeur
+    p['tiles'][4*lig+1*col]=val                                            #Modifie la valeur de la tuile à la position(lig,col) par val
     return
+
 
 def is_room_empty(p,lig,col):
         """
@@ -60,8 +64,8 @@ def is_room_empty(p,lig,col):
         Retourne True si la valeur obtenue à la position (lig;col) vaut 0
         """
 
-        if not get_value(p,lig,col)==0: # Utilisation de la fonction get_value pour voir si la tuile est vide ou non
-            return False # Retourne False quand get_value ne retourne pas 0
+        if not get_value(p,lig,col)==0:         # Utilisation de la fonction get_value pour voir si la tuile est vide ou non
+            return False                        # Retourne False quand get_value ne retourne pas 0
         else:
             return True
 
