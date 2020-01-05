@@ -1,2 +1,2 @@
 # Projet_Tutore_DUT
-Projet Tutoré contenant le jeu Threes
+Projet Tutoré contenant le projet: le jeu Threes
