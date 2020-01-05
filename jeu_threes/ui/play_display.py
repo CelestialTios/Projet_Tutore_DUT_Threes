@@ -1,5 +1,9 @@
 ﻿from game.play import *
 
+#############################
+#  Fonction de la partie 1  #
+#############################
+
 def affichage_simple(p):
     msg=""
     col=0
