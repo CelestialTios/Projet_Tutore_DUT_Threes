@@ -1,3 +1,5 @@
+#-*- coding: utf-8 -*-
+
 import sys, os
 myPath = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, myPath +'/../')
@@ -28,8 +30,8 @@ def get_nb_empty_rooms(p):
 
 def get_next_alea_tiles(plateau,mode):
     """
-    Retourne la position(lig,col) et la valeur alÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©tatoire d'un nombre de
-    tuiles dÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©pendant du mode(init,encours) de la partie.
+    Retourne la position(lig,col) et la valeur alétatoire d'un nombre de
+    tuiles dépendant du mode(init,encours) de la partie.
 
     @param-plateau: dictionnaire contenant les informations du plateau
     @param-mode: cast(string), choisit le nombre de tuiles donner
