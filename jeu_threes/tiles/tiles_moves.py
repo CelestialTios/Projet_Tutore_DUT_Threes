@@ -213,7 +213,8 @@ def column_pack(plateau,num_col,debut,sens):
 
     else:
         return False
-def check_zero2(plateau,num_col,val):
+
+def check_zero_column(plateau,num_col,val):
 
     """
 
@@ -245,7 +246,7 @@ def check_zero2(plateau,num_col,val):
 
     return lig
 
-def addition2(plateau,num_col,val):
+def addition_column(plateau,num_col,val):
 
     """
     
@@ -317,7 +318,7 @@ def columns_move(plateau,num_col,sens):
     print(debut)
     column_pack(plateau,num_col,debut,sens)
 
-def check_zero(plateau,num_lig,val):
+def check_zero_line(plateau,num_lig,val):
     """
     Permet de savoir où doit commencer le déplacement des tuiles
 
@@ -336,7 +337,7 @@ def check_zero(plateau,num_lig,val):
         posZero=get_value(plateau,num_lig,col)
     return col
 
-def addition(plateau,num_lig,val):
+def addition_line(plateau,num_lig,val):
     """
     Vérifie si une addition est possible pour modifier la valeur de la tuile qui écrase
     par la nouvelle valeur
@@ -361,7 +362,7 @@ def addition(plateau,num_lig,val):
     return  False
 
 
-def lines_moves(plateau,sens):
+def lines_move(plateau,sens):
     """
     Permet le déplacement des tuiles de tout le plateau dans un sens donné,
     tout en appliquant les règles du jeu Threes.
@@ -396,8 +397,8 @@ def play_move(plateau,sens):
     elif sens=="h":
         columns_move(plateau,1)
     elif sens=="d":
-        lines_moves(plateau,0)
+        lines_move(plateau,0)
     elif sens=="g":
-        lines_moves(plateau,1)
+        lines_move(plateau,1)
     return
 
