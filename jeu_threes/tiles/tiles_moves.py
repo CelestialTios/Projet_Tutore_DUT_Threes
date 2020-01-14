@@ -213,6 +213,109 @@ def column_pack(plateau,num_col,debut,sens):
 
     else:
         return False
+def check_zero2(plateau,num_col,val):
+
+    """
+
+    Permet de savoir où doit commencer le déplacement des tuiles
+
+    @param-plateau: dictionnaire contenant les informations du plateau
+    @param-num_col: valeur étant la position (col) de la colonne influencée
+    @param-val: permet de savoir où commence la variable lig
+
+    """
+
+
+
+    if val==1:
+
+        lig=0
+
+    elif val==(-1):
+
+        lig=plateau['n']-1
+
+    posZero=get_value(plateau,lig,num_col)
+
+    while posZero != 0:
+
+        lig=lig+val
+
+        posZero=get_value(plateau,lig,num_col)
+
+    return lig
+
+def addition2(plateau,num_col,val):
+
+    """
+    
+    Vérifie si une addition est possible pour modifier la valeur de la tuile qui écrase
+    par la nouvelle valeur
+    
+    @param-plateau: dictionnaire contenant les informations du plateau
+    @param-num_col: valeur étant la position (col) de la colonne influencée
+    @param-val: permet de savoir où commence la variable lig
+
+    """
+
+
+
+    if val==1:
+
+        lig=0
+
+    elif val==-1:
+
+        lig=plateau['n']-1
+
+    while lig != plateau['n']-lig:
+
+        num1=get_value(plateau,lig,num_col)
+
+        lig=lig+val
+
+        num2=get_value(plateau,lig,num_col)
+
+        if num1== num2:
+
+            set_value(plateau,lig-val,col,0)
+
+            set_value(plateau,lig,num_col,num1*2)
+
+            return True
+
+    return  False
+
+def columns_move(plateau,num_col,sens):
+
+    """
+
+    Permet le déplacement des tuiles d'une colonne dans une direction selon le sens donné,
+    tout en appliquant les règles du jeu Threes.
+
+    @param-plateau: dictionnaire contenant les informations du plateau
+    @param-num_col: valeur étant la position (col) de la colonne influencée
+    @param-sens: sens du mouvement des tuiles
+                -0 : déplacement vers le bas
+                -1 : déplacement vers le haut
+
+    """
+
+
+
+    if sens == 1 :
+        val = 1
+
+    elif sens == 0 :
+        val = -1
+
+    debut=check_zero(plateau,num_col,val)       #Donne la colonne où l'on commence
+    if debut > 1 :
+        Verif=addition(plateau,num_col,val)
+
+    debut=check_zero(plateau,num_col,val)
+    print(debut)
+    column_pack(plateau,num_col,debut,sens)
 
 def check_zero(plateau,num_lig,val):
     """
