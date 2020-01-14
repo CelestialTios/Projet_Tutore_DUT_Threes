@@ -170,6 +170,50 @@ def line_move(plateau,num_lig,sens):
     print(debut)
     line_pack(plateau,num_lig,debut,sens)
 
+def column_pack(plateau,num_col,debut,sens):
+
+    """
+
+    Permet le déplacement des tuiles d'une ligne du plateau dans un sens donné, à partir d'un début
+
+    tout en appliquant les règles du jeu Threes.
+
+
+
+    @param-plateau: dictionnaire contenant les informations du plateau
+
+    @param-num_col: valeur étant la position (col) de la colonne influencée
+
+    @param-debut: valeur étant la position (lig) où commence la fonction
+
+    @param-sens: sens du mouvement des tuiles
+
+                -0 : déplacement vers le bas
+
+                -1 : déplacement vers le haut
+
+    """
+    
+    j=plateau['n']
+    if sens==1:                                 # Vers le haut
+        i=1
+        while i < plateau['n']-debut:
+            tass=get_value(plateau,debut+i,num_col)     #Prend la valeur de la case en haut de celle actuelle
+            set_value(plateau,debut+i-1,num_col,tass)   #remplace la valeur de la case actuelle par la valeur tass
+            i+=1
+        set_value(plateau,3,num_col,0)                #Met la première case de la colonne à 0
+    
+    elif sens==0:                           # Vers le bas
+        i=1
+        while i < plateau['n']:
+            tass=get_value(plateau,debut-i,num_col)     #Prend la valeur de la case en bas gauche de celle actuelle
+            set_value(plateau,debut-i+1,num_col,tass)   #remplace la valeur de la case actuelle par la valeur tass
+            i+=1
+        set_value(plateau,0,num_col,0)          #Met la première case de la colonne à 0
+
+    else:
+        return False
+
 def check_zero(plateau,num_lig,val):
     """
     Permet de savoir où doit commencer le déplacement des tuiles
