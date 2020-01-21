@@ -51,6 +51,26 @@ def get_score(p):
     return score
 
 #############################
-#  Fonction de la partie 2  #
+#  Fonction de la partie 3  #
 #############################
+
+def create_new_play(n):
+    """
+    Prend en paramètre un entier et retourne une partie sous forme de dictionnaire contennant 3 clés:
+    
+    - Plateau correspondant au plateau de jeu;
+    - Next_tiles correspondant à la prochaine tuile à placer;
+    - Score correspondant au score en cours obtenu par le joueur sur le plateau.
+    
+    """
+    partie={}
+    
+    partie['plateau']=init_play()                  #initialisation d'un plateau via init_play
+    get_next_alea_tiles(partie['plateau'],"init")  #tuiles placéees via get_next_alea_tiles
+
+    partie['next_tiles']=tiles(partie['plateau'],3) #mémortisation de la valeur de la prochaine tuile via tiles
+    
+    partie['score']=get_score(partie)           #score du joueur via get_score
+    return partie
+
 
