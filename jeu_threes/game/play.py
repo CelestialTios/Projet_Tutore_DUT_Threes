@@ -56,7 +56,7 @@ def get_score(p):
 
 def create_new_play():
     """
-    Prend en paramètre un entier et retourne une partie sous forme de dictionnaire contennant 3 clés:
+    Retourne une partie sous forme de dictionnaire contennant 3 clés:
     
     - Plateau correspondant au plateau de jeu;
     - Next_tiles correspondant à la prochaine tuile à placer;
