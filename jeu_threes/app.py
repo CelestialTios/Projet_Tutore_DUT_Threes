@@ -1,9 +1,13 @@
-﻿from user_entries import *
-from cycle_game import *
-from tiles_acces import *
-from tiles_moves import *
-from play_display import *
-from play import *
+import sys, os
+myPath = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, myPath +'/../')
+        
+import user_entries
+import cycle_game 
+import tiles_acces 
+import tiles_moves 
+import play_display 
+import play 
 import sys
 
 def threes():
