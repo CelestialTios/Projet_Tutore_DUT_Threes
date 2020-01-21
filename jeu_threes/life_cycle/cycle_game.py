@@ -1,11 +1,15 @@
-﻿import json
+import sys, os
+myPath = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, myPath +'/../')
+   
+import json
 import os
 
-from user_entries import *
-from tiles_acces import *
-from tiles_moves import *
-from play_display import *
-from play import *
+import ui.user_entries
+import tiles.tiles_acces 
+import tiles.tiles_moves 
+import ui.play_display 
+import game.play 
 
 
 def save_game(partie):
