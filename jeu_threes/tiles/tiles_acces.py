@@ -78,9 +78,4 @@ def is_room_empty(p,lig,col):
         else:
             return True
 
-#############################
-#  Fonction de la partie 2  #
-#############################
-
-
 
