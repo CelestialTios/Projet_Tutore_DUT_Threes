@@ -71,9 +71,6 @@ def cycle_play(partie):
     #   -4 Retourne True si terminée
     return is_game_over(partie['plateau'])
 
-if __name__=='__main__':
-    restore_game()
-
 
 
 
