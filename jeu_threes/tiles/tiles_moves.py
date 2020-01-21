@@ -5,6 +5,7 @@ myPath = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, myPath +'/../')
 
 import tiles.tiles_acces
+import game.play
 
 #############################
 #  Fonction de la partie 1  #
@@ -28,6 +29,11 @@ def get_nb_empty_rooms(p):
 #  Fonction de la partie 2  #
 #############################
 
+
+        ####################
+        # Nouvelles Tuiles #
+        ####################
+        
 def get_next_alea_tiles(plateau,mode):
     """
     Retourne la position(lig,col) et la valeur alétatoire d'un nombre de
@@ -93,7 +99,9 @@ def position(plateau):
         is_room_empty(plateau,lig,col)
     return lig,col
 
-
+        ####################
+        # Placement Tuiles #
+        ####################
 def put_next_tiles(plateau,tiles):
     """
     Place les tuiles obtenues dans le plateau
@@ -112,6 +120,11 @@ def put_next_tiles(plateau,tiles):
     if tiles['mode']=='encours':
         plateau['tiles'][4*tiles['0']['lig']+1*tiles['0']['col']]=tiles['0']['val']
 
+        
+        ##########################
+        # Mouvement des colonnes #
+        ##########################
+
 def line_pack(plateau,num_lig,debut,sens):
     """
     Permet le déplacement des tuiles d'une ligne du plateau dans un sens donné, à partir d'un début
@@ -124,20 +137,20 @@ def line_pack(plateau,num_lig,debut,sens):
                 -0 : déplacement vers la droite
                 -1 : déplacement vers la gauche
     """
-    if sens==1:                             # Vers la gauche
-        i=1
+    if sens == 1:                             # Vers la gauche
+        i = 1
         while i < plateau['n']-debut:
-            tass=get_value(plateau,num_lig,debut+i)     #Prend la valeur de la case ÃƒÂ  droite de celle actuelle
+            tass = get_value(plateau,num_lig,debut+i)     #Prend la valeur de la case ÃƒÂ  droite de celle actuelle
             set_value(plateau,num_lig,debut+i-1,tass)   #Met la valeur de la case actuelle ÃƒÂ  la valeur tass
-            i+=1
+            i += 1
         set_value(plateau,num_lig,3,0)          #Met la derniÃƒÂ¨re case ÃƒÂ  droite ÃƒÂ  la valeur 0
 
-    elif sens==0:                           # Vers la droite
-        i=1
+    elif sens == 0:                           # Vers la droite
+        i = 1
         while i < plateau['n']:
-            tass=get_value(plateau,num_lig,debut-i)     #Prend la valeur de la case ÃƒÂ  gauche de celle actuelle
+            tass = get_value(plateau,num_lig,debut-i)     #Prend la valeur de la case ÃƒÂ  gauche de celle actuelle
             set_value(plateau,num_lig,debut-i+1,tass)   #Met la valeur de la case actuelle ÃƒÂ  la valeur tass
-            i+=1
+            i += 1
         set_value(plateau,num_lig,0,0)          #Met la derniÃƒÂ¨re case ÃƒÂ  gauche ÃƒÂ  la valeur 0
 
     else:
@@ -162,161 +175,13 @@ def line_move(plateau,num_lig,sens):
     elif sens == 0 :
         val = -1
 
-    debut=check_zero(plateau,num_lig,val)       #Donne la colonne oÃ¹ l'on commence
+    debut=check_zero_line(plateau,num_lig,val)       #Donne la colonne oÃ¹ l'on commence
     if debut > 1 :
         Verif=addition(plateau,num_lig,val)
 
-    debut=check_zero(plateau,num_lig,val)
+    debut=check_zero_line(plateau,num_lig,val)
     print(debut)
     line_pack(plateau,num_lig,debut,sens)
-
-def column_pack(plateau,num_col,debut,sens):
-
-    """
-
-    Permet le déplacement des tuiles d'une ligne du plateau dans un sens donné, à partir d'un début
-
-    tout en appliquant les règles du jeu Threes.
-
-
-
-    @param-plateau: dictionnaire contenant les informations du plateau
-
-    @param-num_col: valeur étant la position (col) de la colonne influencée
-
-    @param-debut: valeur étant la position (lig) où commence la fonction
-
-    @param-sens: sens du mouvement des tuiles
-
-                -0 : déplacement vers le bas
-
-                -1 : déplacement vers le haut
-
-    """
-    
-    j=plateau['n']
-    if sens==1:                                 # Vers le haut
-        i=1
-        while i < plateau['n']-debut:
-            tass=get_value(plateau,debut+i,num_col)     #Prend la valeur de la case en haut de celle actuelle
-            set_value(plateau,debut+i-1,num_col,tass)   #remplace la valeur de la case actuelle par la valeur tass
-            i+=1
-        set_value(plateau,3,num_col,0)                #Met la première case de la colonne à 0
-    
-    elif sens==0:                           # Vers le bas
-        i=1
-        while i < plateau['n']:
-            tass=get_value(plateau,debut-i,num_col)     #Prend la valeur de la case en bas gauche de celle actuelle
-            set_value(plateau,debut-i+1,num_col,tass)   #remplace la valeur de la case actuelle par la valeur tass
-            i+=1
-        set_value(plateau,0,num_col,0)          #Met la première case de la colonne à 0
-
-    else:
-        return False
-
-def check_zero_column(plateau,num_col,val):
-
-    """
-
-    Permet de savoir où doit commencer le déplacement des tuiles
-
-    @param-plateau: dictionnaire contenant les informations du plateau
-    @param-num_col: valeur étant la position (col) de la colonne influencée
-    @param-val: permet de savoir où commence la variable lig
-
-    """
-
-
-
-    if val==1:
-
-        lig=0
-
-    elif val==(-1):
-
-        lig=plateau['n']-1
-
-    posZero=get_value(plateau,lig,num_col)
-
-    while posZero != 0:
-
-        lig=lig+val
-
-        posZero=get_value(plateau,lig,num_col)
-
-    return lig
-
-def addition_column(plateau,num_col,val):
-
-    """
-    
-    Vérifie si une addition est possible pour modifier la valeur de la tuile qui écrase
-    par la nouvelle valeur
-    
-    @param-plateau: dictionnaire contenant les informations du plateau
-    @param-num_col: valeur étant la position (col) de la colonne influencée
-    @param-val: permet de savoir où commence la variable lig
-
-    """
-
-
-
-    if val==1:
-
-        lig=0
-
-    elif val==-1:
-
-        lig=plateau['n']-1
-
-    while lig != plateau['n']-lig:
-
-        num1=get_value(plateau,lig,num_col)
-
-        lig=lig+val
-
-        num2=get_value(plateau,lig,num_col)
-
-        if num1== num2:
-
-            set_value(plateau,lig-val,col,0)
-
-            set_value(plateau,lig,num_col,num1*2)
-
-            return True
-
-    return  False
-
-def columns_move(plateau,num_col,sens):
-
-    """
-
-    Permet le déplacement des tuiles d'une colonne dans une direction selon le sens donné,
-    tout en appliquant les règles du jeu Threes.
-
-    @param-plateau: dictionnaire contenant les informations du plateau
-    @param-num_col: valeur étant la position (col) de la colonne influencée
-    @param-sens: sens du mouvement des tuiles
-                -0 : déplacement vers le bas
-                -1 : déplacement vers le haut
-
-    """
-
-
-
-    if sens == 1 :
-        val = 1
-
-    elif sens == 0 :
-        val = -1
-
-    debut=check_zero(plateau,num_col,val)       #Donne la colonne où l'on commence
-    if debut > 1 :
-        Verif=addition(plateau,num_col,val)
-
-    debut=check_zero(plateau,num_col,val)
-    print(debut)
-    column_pack(plateau,num_col,debut,sens)
 
 def check_zero_line(plateau,num_lig,val):
     """
@@ -378,6 +243,174 @@ def lines_move(plateau,sens):
         line_move(plateau,i,sens)
         i+=1
 
+##########################
+# Mouvement des colonnes #
+##########################
+
+def column_pack(plateau,num_col,debut,sens):
+
+    """
+
+    Permet le déplacement des tuiles d'une ligne du plateau dans un sens donné, à partir d'un début
+
+    tout en appliquant les règles du jeu Threes.
+
+
+
+    @param-plateau: dictionnaire contenant les informations du plateau
+
+    @param-num_col: valeur étant la position (col) de la colonne influencée
+
+    @param-debut: valeur étant la position (lig) où commence la fonction
+
+    @param-sens: sens du mouvement des tuiles
+
+                -0 : déplacement vers le bas
+
+                -1 : déplacement vers le haut
+
+    """
+    
+    j=plateau['n']
+    if sens==1:                                 # Vers le haut
+        i=1
+        while i < plateau['n']-debut:
+            tass=get_value(plateau,debut+i,num_col)     #Prend la valeur de la case en haut de celle actuelle
+            set_value(plateau,debut+i-1,num_col,tass)   #remplace la valeur de la case actuelle par la valeur tass
+            i+=1
+        set_value(plateau,3,num_col,0)                #Met la première case de la colonne à 0
+    
+    elif sens==0:                           # Vers le bas
+        i=1
+        while i < plateau['n']:
+            tass=get_value(plateau,debut-i,num_col)     #Prend la valeur de la case en bas gauche de celle actuelle
+            set_value(plateau,debut-i+1,num_col,tass)   #remplace la valeur de la case actuelle par la valeur tass
+            i+=1
+        set_value(plateau,0,num_col,0)          #Met la première case de la colonne à 0
+
+    else:
+        return False
+
+def column_move(plateau,num_col,sens):
+
+    """
+
+    Permet le déplacement des tuiles d'une colonne dans une direction selon le sens donné,
+    tout en appliquant les règles du jeu Threes.
+
+    @param-plateau: dictionnaire contenant les informations du plateau
+    @param-num_col: valeur étant la position (col) de la colonne influencée
+    @param-sens: sens du mouvement des tuiles
+                -0 : déplacement vers le bas
+                -1 : déplacement vers le haut
+
+    """
+
+    if sens == 1 :
+        val = 1
+
+    elif sens == 0 :
+        val = -1
+
+    debut=check_zero(plateau,num_col,val)       #Donne la colonne où l'on commence
+    if debut > 1 :
+        Verif=addition(plateau,num_col,val)
+
+    debut=check_zero(plateau,num_col,val)
+    print(debut)
+    column_pack(plateau,num_col,debut,sens)
+
+
+
+def check_zero_column(plateau,num_col,val):
+
+    """
+
+    Permet de savoir où doit commencer le déplacement des tuiles
+
+    @param-plateau: dictionnaire contenant les informations du plateau
+    @param-num_col: valeur étant la position (col) de la colonne influencée
+    @param-val: permet de savoir où commence la variable lig
+
+    """
+
+
+
+    if val==1:
+
+        lig=0
+
+    elif val==(-1):
+
+        lig=plateau['n']-1
+
+    posZero=get_value(plateau,lig,num_col)
+
+    while posZero != 0:
+
+        lig=lig+val
+
+        posZero=get_value(plateau,lig,num_col)
+
+    return lig
+
+def addition_column(plateau,num_col,val):
+
+    """
+    
+    Vérifie si une addition est possible pour modifier la valeur de la tuile qui écrase
+    par la nouvelle valeur
+    
+    @param-plateau: dictionnaire contenant les informations du plateau
+    @param-num_col: valeur étant la position (col) de la colonne influencée
+    @param-val: permet de savoir où commence la variable lig
+
+    """
+
+    if val==1:
+
+        lig=0
+
+    elif val==-1:
+
+        lig=plateau['n']-1
+
+    while lig != plateau['n']-lig:
+
+        num1=get_value(plateau,lig,num_col)
+
+        lig=lig+val
+
+        num2=get_value(plateau,lig,num_col)
+
+        if num1== num2:
+
+            set_value(plateau,lig-val,col,0)
+
+            set_value(plateau,lig,num_col,num1*2)
+
+            return True
+
+    return  False
+
+def columns_move(plateau,sens):
+    """
+    Permet le déplacement des tuiles de tout le plateau dans un sens donné,
+    tout en appliquant les règles du jeu Threes.
+    @param-plateau: dictionnaire contenant les informations du plateau
+    @param-sens: sens du mouvement des tuiles
+                -0 : déplacement vers la droite
+                -1 : déplacement vers la gauche
+    """
+
+    i=0
+    while i< plateau['n']:
+        column_move(plateau,i,sens)
+        i+=1
+
+######################
+# Déplacement totale #
+######################
 
 def play_move(plateau,sens):
     """
