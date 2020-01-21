@@ -54,7 +54,7 @@ def get_score(p):
 #  Fonction de la partie 3  #
 #############################
 
-def create_new_play(n):
+def create_new_play():
     """
     Prend en paramètre un entier et retourne une partie sous forme de dictionnaire contennant 3 clés:
     
