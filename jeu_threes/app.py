@@ -2,12 +2,12 @@ import sys, os
 myPath = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, myPath +'/../')
         
-import user_entries
-import cycle_game 
-import tiles_acces 
-import tiles_moves 
-import play_display 
-import play 
+import ui.user_entries
+import life_cycle.cycle_game 
+import tiles.tiles_acces 
+import tiles.tiles_moves 
+import ui.play_display 
+import game.play 
 import sys
 
 def threes():
