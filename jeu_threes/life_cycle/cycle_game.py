@@ -21,7 +21,8 @@ def restore_game():
     if os.path.exists("game_saved.json"):
         print('True')
         file = open("game_saved.json","r")
-        partie=file.read()
+        transformation=file.read()
+        partie=json.loads(transformation)
     else:
         print('False')
         partie=create_new_play()
