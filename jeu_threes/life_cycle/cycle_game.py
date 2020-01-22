@@ -13,11 +13,19 @@ import game.play
 
 
 def save_game(partie):
+    """
+    Prend en paramètre une partie.
+    Sauvegarde la partie au format json.
+    """
     file = open("game_saved.json", "w")
     file.write(json.dumps(partie))
     file.close()
 
 def restore_game():
+    """
+    Permet de restaurer la partie étant sous forme de fichier json
+    Retourne la partie si elle existe
+    """
     if os.path.exists("game_saved.json"):
         print('True')
         file = open("game_saved.json","r")
