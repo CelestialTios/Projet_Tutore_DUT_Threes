@@ -115,3 +115,4 @@ if __name__ == '__main__':
     test_get_user_menu()
     test_save_game()
     test_restore_game()
+    print("Partie 3 : opérationnel")
