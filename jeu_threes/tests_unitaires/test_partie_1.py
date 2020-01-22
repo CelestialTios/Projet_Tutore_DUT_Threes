@@ -1,12 +1,13 @@
 import sys, os
 myPath = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, myPath +'/../')
-
-import tiles.tiles_acces
-import tiles.tiles_moves
-import game.play
-import ui.play_display
-
+        
+import ui.user_entries
+import life_cycle.cycle_game 
+import tiles.tiles_acces 
+import tiles.tiles_moves 
+import ui.play_display 
+import game.play 
 
 ########################################################
 ########################################################
