@@ -237,7 +237,7 @@ def addition_line(plateau,num_lig,val,debut):
             set_value(plateau,num_lig,col-val,0)
             set_value(plateau,num_lig,col,num1*2)
             return True
-        if num1 + num2==3:
+        if num1==num2 and (num1+num2)%3==0:
             set_value(plateau,num_lig,col-val,0)
             set_value(plateau,num_lig,col,3)
             return True
@@ -366,7 +366,7 @@ def addition_column(plateau,num_col,val,debut):
             set_value(plateau,lig-val,num_col,0)
             set_value(plateau,lig,num_col,num1*2)
             return True
-        if num1 + num2==3:
+        if num1==num2 and (num1+num2)%3==0:
             set_value(plateau,lig,num_col,0)
             set_value(plateau,lig-val,num_col,3)
             return True
